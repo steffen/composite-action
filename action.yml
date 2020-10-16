@@ -8,6 +8,9 @@ inputs:
 runs:
   using: "composite"
   steps: 
+    - run: echo $TOKEN
+      env:
+        TOKEN: {{ secrets.TOKEN }}
     - run: git clone action-1
       shell: bash
     - run: git clone action-2
