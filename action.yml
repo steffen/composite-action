@@ -5,17 +5,18 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  token:
+    required: true
 runs:
   using: "composite"
   steps: 
-    - run: echo $TOKEN
-      env:
-        TOKEN: {{ secrets.TOKEN }}
-    - run: git clone action-1
+    - run: echo ${{ inputs.TOKEN }}
       shell: bash
-    - run: git clone action-2
-      shell: bash
-    - run: node ${{ github.action_path }}/action-1/dist/index.js --who-to-greet ${{ inputs.who-to-greet }}
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    - run: git clone action-1
+#      shell: bash
+#    - run: git clone action-2
+#      shell: bash
+#    - run: node ${{ github.action_path }}/action-1/dist/index.js --who-to-greet ${{ inputs.who-to-greet }}
+#      shell: bash
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
